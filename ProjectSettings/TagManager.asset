@@ -8,6 +8,10 @@ TagManager:
   - Plataforma
   - Slime
   - Limite
+  - Ataque
+  - BotonParaNivel1
+  - Moneda
+  - Corazon
   layers:
   - Default
   - TransparentFX

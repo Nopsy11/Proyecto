@@ -6,9 +6,11 @@ public class MovimientoSlime : MonoBehaviour {
 
    int contador;
    float velocidad;
+   int vidaSlime;
 
    void Start() {
        contador = 0;
+       vidaSlime = 2;
    }
 
     void Update()    {
@@ -30,6 +32,14 @@ public class MovimientoSlime : MonoBehaviour {
             contador++;
             velocidad = (250f * Time.deltaTime);
             gameObject.GetComponent<SpriteRenderer>().flipX =  true;
+        }
+
+        if(collision.transform.tag == "Ataque"){
+            vidaSlime--;
+            Debug.Log(vidaSlime + " vida slime");
+            if(vidaSlime <= 0){
+                Destroy(gameObject, 0.02f);
+            }
         }
     }
 }

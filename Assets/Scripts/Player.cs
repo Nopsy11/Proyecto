@@ -105,28 +105,33 @@ public class Player : MonoBehaviour {
 
         if(collision.transform.tag == "Moneda"){
             puntos++;
-            Debug.Log(puntos);
+            Debug.Log(puntos + " puntos");
         }
 
         if(collision.transform.tag == "Corazon"){
             if (vida == 3){
                 puntos++;
-                Debug.Log(puntos);
+                Debug.Log(puntos + " puntos");
             }
             else{
                 vida++;
-                Debug.Log(vida);
+                Debug.Log(vida + " vida");
             }
         }
 
         if(collision.transform.tag == "Slime"){
             vida --;
-            Debug.Log(vida);
+            Debug.Log(vida + " vida");
             if(vida == 0){
                 Debug.Log("Has perdido!");
+                // PlayerPrefs.SetFloat("volumenAudio", sliderValue);
                 SceneManager.LoadScene("Reintentar");
                 // gameObject.Destroy;
             }
+        }
+
+        if(collision.transform.tag == "BotonParaNivel1"){
+            SceneManager.LoadScene("Nivel1");
         }
     }
 
