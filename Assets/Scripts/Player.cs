@@ -5,15 +5,40 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
     bool puedeSaltar;
+    int vida;
+    // [SerializedField] private float vida;
+    // [SerializedField] private float maximoVida;
+    // [SerializedField] private BarraDeVida barraDeVida;
     
     // Start is called before the first frame update
     void Start()    {
-        
+        vida = 3;
+        // vida = maximoVida;
+        // barraDeVida.InicializarBarraDeVida(vida);
     }
+
+    // public TomarDaño(float daño) {
+    //     vida -= daño;
+    //     barraDeVida.CambiarVidaActual(vida);
+    //     if (vida <= 0) {
+    //         Destroy(gameObject);
+    //     }
+    // }
+
+    // public void Curar(float curacion) {
+    //     if ((vida + curacion) > maximoVida){
+    //         vida = maximoVida;
+    //     }
+    //     else{
+    //         vida += curacion;
+    //     }
+    // }
+
 
     // Update is called once per frame
     void Update()    {
 
+        //inicio movimiento
         // sprint izquierda
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift)) {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-2000f * Time.deltaTime, 0));
@@ -53,6 +78,8 @@ public class Player : MonoBehaviour {
             gameObject.GetComponent<Animator>().SetBool("moving", false);
         }
 
+        //fin movimiento
+
         // if(Input.GetKeyDown(KeyCode.J)) {
         //     Atacar();
         // }
@@ -62,8 +89,17 @@ public class Player : MonoBehaviour {
         if(collision.transform.tag == "Suelo"){
             puedeSaltar = true;
         }
+
         if(collision.transform.tag == "Plataforma"){
             puedeSaltar = true;
+        }
+
+        if(collision.transform.tag == "Slime"){
+            vida --;
+            Debug.Log(vida);
+            if(vida == 0){
+                Debug.Log("Has perdido!");
+            }
         }
     }
 
