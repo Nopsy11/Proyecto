@@ -17,6 +17,6 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks {
     }
 
     public override void OnJoinedRoom(){
-        PhotonNetwork.LoadLevel("PvP");
+        PhotonNetwork.LoadLevel("PlayerVsPlayer");
     }
 }

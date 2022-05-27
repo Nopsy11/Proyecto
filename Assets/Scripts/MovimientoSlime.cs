@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class MovimientoSlime : MonoBehaviour {
 
-   int contador; 
+   int contador;
+   float velocidad;
+
    void Start() {
        contador = 0;
    }
 
     void Update()    {
         if (contador == 0){
-           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-450f * Time.deltaTime, 0));
+           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250f * Time.deltaTime, 0));
+       }
+       else{
+           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(velocidad, 0));
        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
         if(collision.transform.tag == "Limite" && (contador%2)!=0){
             contador ++;
-            Debug.Log(contador + "contador");
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-500f * Time.deltaTime, 0));
+            velocidad = (-250f * Time.deltaTime);
             gameObject.GetComponent<SpriteRenderer>().flipX =  false;
         }
         else if(collision.transform.tag == "Limite" && (contador%2)==0){
             contador++;
-            Debug.Log(contador + "el cuenteo");
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(500f * Time.deltaTime, 0));
+            velocidad = (250f * Time.deltaTime);
             gameObject.GetComponent<SpriteRenderer>().flipX =  true;
         }
     }

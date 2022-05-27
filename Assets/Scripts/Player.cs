@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour {
 
     bool puedeSaltar;
     int vida;
+    int puntos;
     // [SerializedField] private float vida;
     // [SerializedField] private float maximoVida;
     // [SerializedField] private BarraDeVida barraDeVida;
@@ -13,6 +15,7 @@ public class Player : MonoBehaviour {
     // Start is called before the first frame update
     void Start()    {
         vida = 3;
+        puntos = 0;
         // vida = maximoVida;
         // barraDeVida.InicializarBarraDeVida(vida);
     }
@@ -78,6 +81,12 @@ public class Player : MonoBehaviour {
             gameObject.GetComponent<Animator>().SetBool("moving", false);
         }
 
+        if (SceneManager.GetActiveScene().name == "Nivel1"){
+            if(Input.GetKeyDown(KeyCode.Space)){
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
+            }
+        }
+
         //fin movimiento
 
         // if(Input.GetKeyDown(KeyCode.J)) {
@@ -94,11 +103,29 @@ public class Player : MonoBehaviour {
             puedeSaltar = true;
         }
 
+        if(collision.transform.tag == "Moneda"){
+            puntos++;
+            Debug.Log(puntos);
+        }
+
+        if(collision.transform.tag == "Corazon"){
+            if (vida == 3){
+                puntos++;
+                Debug.Log(puntos);
+            }
+            else{
+                vida++;
+                Debug.Log(vida);
+            }
+        }
+
         if(collision.transform.tag == "Slime"){
             vida --;
             Debug.Log(vida);
             if(vida == 0){
                 Debug.Log("Has perdido!");
+                SceneManager.LoadScene("Reintentar");
+                // gameObject.Destroy;
             }
         }
     }
