@@ -8,10 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/Intro.unity
-    guid: cabdbdc9f72aca445a6af39b93b78a88
-  - enabled: 0
-    path: Assets/Scenes/Nivel1.unity
-    guid: 8b3a06a0edaf32e4b8749319abb7db6e
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 347c5c92d1a0bd44fbbae288db9aa09f
+  - enabled: 1
+    path: Assets/Scenes/Lobby.unity
+    guid: bfd582e727f40d449af118fe13076c0c
+  - enabled: 1
+    path: Assets/Scenes/PvP.unity
+    guid: b332634d915ae0e489a827031d332786
   m_configObjects: {}
