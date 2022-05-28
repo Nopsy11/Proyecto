@@ -9,6 +9,9 @@ public class Player : MonoBehaviour {
     bool puedeSaltar;
     float vida;
     int puntos;
+    
+    public GameObject ataque;
+    public GameObject posicionAtaque;
 
     public Image relleno;
     
@@ -80,9 +83,9 @@ public class Player : MonoBehaviour {
 
         //fin movimiento
 
-        // if(Input.GetKeyDown(KeyCode.J)) {
-        //     Atacar();
-        // }
+        if(Input.GetKeyDown(KeyCode.J)) {
+            GameObject.Instantiate(ataque, posicionAtaque.transform.position, gameObject.transform.rotation);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision){
@@ -97,12 +100,14 @@ public class Player : MonoBehaviour {
         if(collision.transform.tag == "Moneda"){
             puntos++;
             Debug.Log(puntos + " puntos");
+            ControlPuntuacion.instance.SumarPuntos();
         }
 
         if(collision.transform.tag == "Corazon"){
             if (vida == 3){
                 puntos++;
                 Debug.Log(puntos + " puntos");
+                ControlPuntuacion.instance.SumarPuntos();
             }
             else{
                 vida++;
@@ -117,10 +122,8 @@ public class Player : MonoBehaviour {
             relleno.fillAmount = vida / 3;
             Debug.Log(vida + " vida");
             if(vida == 0){
-                Debug.Log("Has perdido!");
-                // PlayerPrefs.SetFloat("volumenAudio", sliderValue);
+                // Player.Prefs
                 SceneManager.LoadScene("Reintentar");
-                // gameObject.Destroy;
             }
         }
         else{
@@ -130,6 +133,10 @@ public class Player : MonoBehaviour {
         if(collision.transform.tag == "BotonParaNivel1"){
             SceneManager.LoadScene("Nivel1");
         }
-    }
 
+        if(collision.transform.tag == "BotonParaGanar"){
+            PlayerPrefs.SetInt("PuntuacionActual", ControlPuntuacion.instance.DevolverPuntuacion());
+            SceneManager.LoadScene("Ganador");
+        }
+    }
 }

@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Nivel1.unity
     guid: 8b3a06a0edaf32e4b8749319abb7db6e
   - enabled: 1
+    path: Assets/Scenes/Ganador.unity
+    guid: d830268907e185d4297c223ebe9b56c3
+  - enabled: 1
     path: Assets/Scenes/Reintentar.unity
     guid: eb1cb855a457c3443a140f5035a1a240
   m_configObjects: {}

@@ -37,6 +37,8 @@ public class MovimientoSlime : MonoBehaviour {
         if(collision.transform.tag == "Ataque"){
             vidaSlime--;
             Debug.Log(vidaSlime + " vida slime");
+            collision.gameObject.SetActive(false);
+            Destroy(collision.gameObject, 0.02f);
             if(vidaSlime <= 0){
                 Destroy(gameObject, 0.02f);
             }

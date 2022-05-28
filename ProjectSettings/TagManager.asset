@@ -12,6 +12,8 @@ TagManager:
   - BotonParaNivel1
   - Moneda
   - Corazon
+  - PosicionAtaque
+  - BotonParaGanar
   layers:
   - Default
   - TransparentFX
