@@ -23,18 +23,21 @@ public class Player : MonoBehaviour {
 
         //inicio movimiento
         // sprint izquierda
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.LeftShift)) {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-2000f * Time.deltaTime, 0));
-            gameObject.GetComponent<Animator>().SetBool("moving", true);
-            gameObject.GetComponent<SpriteRenderer>().flipX =  true;
-        }
+        if(Input.GetKey(KeyCode.LeftShift)){
+            if (Input.GetKey(KeyCode.A)) {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-2000f * Time.deltaTime, 0));
+                gameObject.GetComponent<Animator>().SetBool("sprint", true);
+                gameObject.GetComponent<SpriteRenderer>().flipX =  true;
+            }
 
-        //sprint derecha
-        if (Input.GetKey(KeyCode.D) && Input.GetKey(KeyCode.LeftShift)) {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(2000f * Time.deltaTime, 0));
-            gameObject.GetComponent<Animator>().SetBool("moving", true);
-            gameObject.GetComponent<SpriteRenderer>().flipX =  false;
+            //sprint derecha
+            if (Input.GetKey(KeyCode.D)) {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(2000f * Time.deltaTime, 0));
+                gameObject.GetComponent<Animator>().SetBool("sprint", true);
+                gameObject.GetComponent<SpriteRenderer>().flipX =  false;
+            }
         }
+        gameObject.GetComponent<Animator>().SetBool("sprint", false);
 
         //izquierda
         if (Input.GetKey(KeyCode.A)) {
@@ -54,6 +57,10 @@ public class Player : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.Space) && puedeSaltar) {
             puedeSaltar = false;
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
+            gameObject.GetComponent<Animator>().SetBool("jumping", true);
+        }
+        else{
+            gameObject.GetComponent<Animator>().SetBool("jumping", false);
         }
 
         //comprobar si se mueve
@@ -63,7 +70,11 @@ public class Player : MonoBehaviour {
 
         if (SceneManager.GetActiveScene().name == "Nivel1"){
             if(Input.GetKeyDown(KeyCode.Space)){
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 1000f));
+                gameObject.GetComponent<Animator>().SetBool("jumping", true);
+            }
+            else{
+                gameObject.GetComponent<Animator>().SetBool("jumping", false);
             }
         }
 
@@ -101,6 +112,7 @@ public class Player : MonoBehaviour {
         }
 
         if(collision.transform.tag == "Slime"){
+            gameObject.GetComponent<Animator>().SetBool("hurted", true);
             vida --;
             relleno.fillAmount = vida / 3;
             Debug.Log(vida + " vida");
@@ -110,6 +122,9 @@ public class Player : MonoBehaviour {
                 SceneManager.LoadScene("Reintentar");
                 // gameObject.Destroy;
             }
+        }
+        else{
+            gameObject.GetComponent<Animator>().SetBool("hurted", false);
         }
 
         if(collision.transform.tag == "BotonParaNivel1"){
