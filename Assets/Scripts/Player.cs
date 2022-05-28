@@ -2,41 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
     bool puedeSaltar;
-    int vida;
+    float vida;
     int puntos;
-    // [SerializedField] private float vida;
-    // [SerializedField] private float maximoVida;
-    // [SerializedField] private BarraDeVida barraDeVida;
+
+    public Image relleno;
     
     // Start is called before the first frame update
     void Start()    {
         vida = 3;
         puntos = 0;
-        // vida = maximoVida;
-        // barraDeVida.InicializarBarraDeVida(vida);
     }
-
-    // public TomarDaño(float daño) {
-    //     vida -= daño;
-    //     barraDeVida.CambiarVidaActual(vida);
-    //     if (vida <= 0) {
-    //         Destroy(gameObject);
-    //     }
-    // }
-
-    // public void Curar(float curacion) {
-    //     if ((vida + curacion) > maximoVida){
-    //         vida = maximoVida;
-    //     }
-    //     else{
-    //         vida += curacion;
-    //     }
-    // }
-
 
     // Update is called once per frame
     void Update()    {
@@ -116,11 +96,13 @@ public class Player : MonoBehaviour {
             else{
                 vida++;
                 Debug.Log(vida + " vida");
+                relleno.fillAmount = vida / 3;
             }
         }
 
         if(collision.transform.tag == "Slime"){
             vida --;
+            relleno.fillAmount = vida / 3;
             Debug.Log(vida + " vida");
             if(vida == 0){
                 Debug.Log("Has perdido!");

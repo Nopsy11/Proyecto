@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 5950470969342171676}
   - component: {fileID: 8850421056045889298}
   - component: {fileID: 1439331939}
+  - component: {fileID: 2069808124}
   m_Layer: 0
   m_Name: Corazon
-  m_TagString: Untagged
+  m_TagString: Corazon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -114,3 +115,15 @@ PolygonCollider2D:
       - {x: 0.3125, y: 0}
       - {x: 0.6875, y: 0.375}
       - {x: 0.6875, y: 1.125}
+--- !u!114 &2069808124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908871657378092389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7d439028b2b8b40881e425b4d4d964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

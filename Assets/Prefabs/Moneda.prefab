@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 6530698121280865256}
   - component: {fileID: 772346289342232637}
   - component: {fileID: 1244735804}
+  - component: {fileID: 1886439755}
   m_Layer: 0
   m_Name: Moneda
-  m_TagString: Untagged
+  m_TagString: Moneda
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,3 +100,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.5625}
   m_Size: {x: 0.875, y: 1.125}
   m_Direction: 0
+--- !u!114 &1886439755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5008009266317229410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7d439028b2b8b40881e425b4d4d964, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
