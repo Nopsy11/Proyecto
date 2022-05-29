@@ -8,9 +8,9 @@ public class ControladorAtaque : MonoBehaviour {
         Destroy(gameObject, 0.02f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision){
-        if(collision.transform.tag == "Slime"){
+    // private void OnCollisionEnter2D(Collision2D collision){
+    //     if(collision.transform.tag == "Slime"){
             
-        }
-    }
+    //     }
+    // }
 }

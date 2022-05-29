@@ -121,6 +121,18 @@ public class Player : MonoBehaviour {
             }
         }
 
+        if(collision.transform.tag == "Ataque"){
+            gameObject.GetComponent<Animator>().SetBool("hurted", true);
+            vida --;
+            relleno.fillAmount = vida / 3;
+            if(vida == 0){
+                SceneManager.LoadScene("MainTitle");
+            }
+        }
+        else{
+            gameObject.GetComponent<Animator>().SetBool("hurted", false);
+        }
+
         if(collision.transform.tag == "Slime"){
             gameObject.GetComponent<Animator>().SetBool("hurted", true);
             vida --;
