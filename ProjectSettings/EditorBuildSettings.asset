@@ -24,8 +24,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: bfd582e727f40d449af118fe13076c0c
   - enabled: 1
-    path: Assets/Scenes/PlayerVsPlayer.unity
-    guid: 682614a4c65d229408b46e83fbc5b2f6
+    path: Assets/Scenes/Multijugador.unity
+    guid: 41e30d007bd7770498228582d5ac7617
   - enabled: 1
     path: Assets/Scenes/Nivel1.unity
     guid: 8b3a06a0edaf32e4b8749319abb7db6e

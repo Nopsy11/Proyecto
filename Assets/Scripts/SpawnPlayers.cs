@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 
 public class SpawnPlayers : MonoBehaviour {
-    public GameObject playerPvPPrefab;
+    public GameObject Player;
 
     public float minX;
     public float maxX;
@@ -13,6 +13,6 @@ public class SpawnPlayers : MonoBehaviour {
 
     private void Start(){
         Vector2 randomPosition = new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-        PhotonNetwork.Instantiate(playerPvPPrefab.name, randomPosition, Quaternion.identity);
+        PhotonNetwork.Instantiate(Player.name, randomPosition, Quaternion.identity);
     }
 }
