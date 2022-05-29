@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Ajustes.unity
     guid: 16e02a22670fa434d963ed97b132c54e
   - enabled: 1
+    path: Assets/Scenes/ListadoPuntuaciones.unity
+    guid: d524892d0374d0f499cc5116c25b998c
+  - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: cabdbdc9f72aca445a6af39b93b78a88
   - enabled: 1

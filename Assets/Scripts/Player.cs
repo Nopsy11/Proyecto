@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
+    public static Player instance;
+
     bool puedeSaltar;
     float vida;
     int puntos;
@@ -14,6 +16,8 @@ public class Player : MonoBehaviour {
     public GameObject posicionAtaque;
 
     public Image relleno;
+
+    public AlmacenarPuntuaciones puntuaciones = new AlmacenarPuntuaciones();
     
     // Start is called before the first frame update
     void Start()    {
@@ -99,19 +103,16 @@ public class Player : MonoBehaviour {
 
         if(collision.transform.tag == "Moneda"){
             puntos++;
-            Debug.Log(puntos + " puntos");
             ControlPuntuacion.instance.SumarPuntos();
         }
 
         if(collision.transform.tag == "Corazon"){
             if (vida == 3){
                 puntos++;
-                Debug.Log(puntos + " puntos");
                 ControlPuntuacion.instance.SumarPuntos();
             }
             else{
                 vida++;
-                Debug.Log(vida + " vida");
                 relleno.fillAmount = vida / 3;
             }
         }
@@ -120,9 +121,7 @@ public class Player : MonoBehaviour {
             gameObject.GetComponent<Animator>().SetBool("hurted", true);
             vida --;
             relleno.fillAmount = vida / 3;
-            Debug.Log(vida + " vida");
             if(vida == 0){
-                // Player.Prefs
                 SceneManager.LoadScene("Reintentar");
             }
         }
@@ -136,7 +135,28 @@ public class Player : MonoBehaviour {
 
         if(collision.transform.tag == "BotonParaGanar"){
             PlayerPrefs.SetInt("PuntuacionActual", ControlPuntuacion.instance.DevolverPuntuacion());
+            if(PlayerPrefs.HasKey("PuntuacionesTotales")){
+                AlmacenarPuntuaciones temporal = cargarDatos();
+                temporal.puntuaciones.Add(ControlPuntuacion.instance.DevolverPuntuacion());
+                GuardarPuntuaciones(temporal);
+            }
+            else{
+                puntuaciones.puntuaciones.Add(ControlPuntuacion.instance.DevolverPuntuacion());
+                GuardarPuntuaciones(puntuaciones);
+            }
             SceneManager.LoadScene("Ganador");
         }
+    }
+    public AlmacenarPuntuaciones cargarDatos() {
+        string puntuaciones = PlayerPrefs.GetString("PuntuacionesTotales");
+        AlmacenarPuntuaciones aux = JsonUtility.FromJson<AlmacenarPuntuaciones>(puntuaciones);
+        return aux;
+    }
+
+    public void GuardarPuntuaciones(AlmacenarPuntuaciones playerData) {
+        string saveJSON = JsonUtility.ToJson(playerData);
+        Debug.Log(saveJSON);
+        PlayerPrefs.SetString("PuntuacionesTotales", saveJSON);
+        PlayerPrefs.Save();
     }
 }
