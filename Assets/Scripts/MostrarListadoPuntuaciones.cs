@@ -7,14 +7,16 @@ public class MostrarListadoPuntuaciones : MonoBehaviour {
 
     public Text Puntuaciones_listado;
 
-    void Start()     {
-        DevolverListadoPuntuaciones();
+    public AlmacenarPuntuaciones cargarDatos() {
+        string puntuaciones = PlayerPrefs.GetString("PuntuacionesTotales");
+        AlmacenarPuntuaciones aux = JsonUtility.FromJson<AlmacenarPuntuaciones>(puntuaciones);
+        return aux;
     }
 
-    public void DevolverListadoPuntuaciones(){
-        AlmacenarPuntuaciones temp = Player.instance.cargarDatos();
+    void Start()     {
+        AlmacenarPuntuaciones temp = cargarDatos();
         foreach (int i in temp.puntuaciones){
-            Puntuaciones_listado.text += i.ToString();
+            Puntuaciones_listado.text += "Partida anterior: " + i.ToString() + "\n";
         }
     }
 }
