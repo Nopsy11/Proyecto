@@ -89,6 +89,10 @@ public class Player : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.J)) {
             GameObject.Instantiate(ataque, posicionAtaque.transform.position, gameObject.transform.rotation);
+            gameObject.GetComponent<Animator>().SetBool("attacking", true);
+        }
+        else{
+            gameObject.GetComponent<Animator>().SetBool("attacking", false);
         }
     }
 

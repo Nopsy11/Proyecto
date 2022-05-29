@@ -934,8 +934,8 @@ GameObject:
   - component: {fileID: 1698349511}
   - component: {fileID: 1698349512}
   m_Layer: 0
-  m_Name: Ataque
-  m_TagString: Ataque
+  m_Name: PosicionAtaque
+  m_TagString: PosicionAtaque
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -947,8 +947,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1698349509}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.67, y: -0.59, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6700001, y: -0.59, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2520851807062207763}
@@ -1425,9 +1425,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16e05e046b99bc54bb295b629b27f9c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ataque: {fileID: 0}
-  posicionAtaque: {fileID: 0}
+  ataque: {fileID: 5899111968960049950, guid: 52d11acd40787934fbebbefd82646501, type: 3}
+  posicionAtaque: {fileID: 1698349509}
   relleno: {fileID: 1880838826}
+  puntuaciones:
+    puntuaciones: 
 --- !u!95 &8915757139194991302
 Animator:
   serializedVersion: 3

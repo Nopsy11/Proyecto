@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ControladorAtaque : MonoBehaviour {
 
-    // Update is called once per frame
-    void Update()    {
-        if(Input.GetKey(KeyCode.J)){
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
-        }
-        else {
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+    void Start() {
+        Destroy(gameObject, 0.02f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision){
+        if(collision.transform.tag == "Slime"){
+            
         }
     }
 }
